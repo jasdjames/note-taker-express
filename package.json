@@ -1,0 +1,33 @@
+{
+  "name": "note-taker-express",
+  "version": "1.0.0",
+  "description": "This application takes and saves notes for the user",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasdjames/note-taker-express.git"
+  },
+  "keywords": [
+    "notes",
+    "save",
+    "express"
+  ],
+  "author": "JasDJames",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jasdjames/note-taker-express/issues"
+  },
+  "homepage": "https://github.com/jasdjames/note-taker-express#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+
+  }
+}
