@@ -2,15 +2,22 @@
 
 const express = require('express');
 const path = require('path');
+// const getAndRenderNotes = require('./public/assets/js/index')
+
 
 // Sets up the Express App
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Sets up the Express app to handle data parsing
+// Sets up the Express app to handle data parsinrg
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+require('./public/routes/apiRoutes')(app);
+require('./public/routes/htmlRoutes')(app);
+
+
 
 // Star Wars Characters (DATA)
 
@@ -41,17 +48,15 @@ app.use(express.json());
 // Routes
 
 // Basic route that sends the user first to the AJAX Page
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/public/index.html')));
+// app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/public/index.html')));
 
-app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, '/public/notes.html')));
+// app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, '/public/notes.html')));
 
-app.get('/public/assets/js/index.js', (req, res) => res.json(getAndRenderNotes));
 
-// Displays a single character, or returns false
-// app.get('/api/characters/:character', (req, res) => {
-//   const chosen = req.params.character;
+// Displays the database of notes
+// app.get('/api/notes', (req, res) => res.sendFile(path.join(__dirname, '/db/db.json')));
 
-//   console.log(chosen);
+
 
   /* Check each character routeName and see if the same as "chosen"
    If the statement is true, send the character back as JSON,
@@ -66,8 +71,13 @@ app.get('/public/assets/js/index.js', (req, res) => res.json(getAndRenderNotes))
 //   return res.json(false);
 // });
 
-// Create New Characters - takes in JSON input
-// app.post('/api/characters', (req, res) => {
+// Append what the person types to an li in the ul - list group - then post 
+// app.post('/api/notes', (req, res) => {
+//   const newNote = req.li
+// app.post('/api/notes', (req, res) => db.json(getAndRenderNotes));
+
+
+
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body parsing middleware
 //   const newCharacter = req.body;
