@@ -1,17 +1,26 @@
 
 const path = require('path');
-// const getNotes = require('../assets/js/index')
-
+const fs = require('fs')
+const noteData = require('../../db/db.json')
 // ROUTING
 
 module.exports = (app) => {
 
 app.get('/api/notes', (req, res) => { 
-    res.sendFile(path.join(__dirname, '/db/db.json'));
+res.json(noteData)
 });
 
-// app.post('/api/notes', (req, res) => {
-//     db.json(getNotes);
-// });
+
+
+
+// // I know I need to export something from index and WriteFileSync so I need a FS
+app.post('/api/notes', (req, res) => {
+    
+const note = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../db/db.json')))
+
+note.push(req.body);
+console.log(note);
+fs.writeFileSync(note);
+});
 };
 
