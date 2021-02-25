@@ -1,13 +1,15 @@
 
 const path = require('path');
 const fs = require('fs')
-const noteData = require('../../db/db.json')
+const { v4: uuid } = require('uuid');
 // ROUTING
 
 module.exports = (app) => {
 
 app.get('/api/notes', (req, res) => { 
-res.json(noteData)
+    const dbPath = path.resolve(__dirname, '../../db/db.json')
+    const note = JSON.parse(fs.readFileSync(dbPath))
+res.json(note)
 });
 
 
@@ -17,12 +19,18 @@ res.json(noteData)
 app.post('/api/notes', (req, res) => {
 const dbPath = path.resolve(__dirname, '../../db/db.json')
 const note = JSON.parse(fs.readFileSync(dbPath))
-
+req.body['id'] = uuid();
 note.push(req.body);
-console.log(note);
-const writeNote = fs.writeFileSync(dbPath,JSON.stringify(note));
+fs.writeFileSync(dbPath,JSON.stringify(note));
 console.log('this it is!!',note);
-res.json(note)
+res.json(note);
+
 });
 };
 
+// app.delete('/api/notes/:id', (req, res) => {
+// const dbPath = path.resolve(__dirname, '../../db/db.json')
+// const note =  JSON.parse(fs.readFileSync(dbPath))
+// const deleteID = req.params.id;
+// }
+// )
