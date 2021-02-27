@@ -32,7 +32,7 @@ I have included photos below:
 
 
 ## Contributing
-Please contact me by email or github for contribution
+Please contact me by email or github for contribution. I worked collaboratively on this project with my classmates and my tutor. I used the resources provided to my via instruction and prior knowledge. 
 
 
 ## Tests
