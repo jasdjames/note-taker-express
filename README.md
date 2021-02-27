@@ -23,7 +23,7 @@ The application will run from the heroku deployment
 This application will allow the user to type the notes in a text box with a title. Upon saving the note it will populate in a column on the left. The note can then be deleted by pushing the trash can icon. 
 
 I have included photos below:
-![Deleted](public/assets/img/first.png)
+![Deleted](public/assets/img/deleted.png)
 ![First](public/assets/img/first.png)
 
 
